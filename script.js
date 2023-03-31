@@ -13,6 +13,9 @@ function analyze(PcC , UserC){
         if(((UserC===1)&&(PcC===3))||((UserC===2)&&(PcC===1))||((UserC===3)&&(PcC===2))){
             return 1
         }
+        else if(UserC==PcC){
+            return 3
+        }
         else{return 2}
     }
     else {return 0   }
@@ -29,23 +32,39 @@ function pc_choice_to_word(input){
         return " scissor"
     }
 }
+function user_choice_to_word(input){
+    if(input === 1){
+        return " Rock"
+    }
+    else if(input === 2){
+        return " Paper"
+    }
+    else if(input === 3){
+        return " scissor"
+    }
+}
 
-function ShowResult(GR,PCC){
+function ShowResult(GR,PCC,UsC){
     if(GR===0){
         return  "please enter a valid value"
     }
     else if((GR===1)){
-        return "yeah! you won\n" +`PC chose ${PCC}`
+        return "yeah! you won\n" +`${UsC} beats${PCC}`
     }
     else if((GR===2)){
-        let x= "oh! you lost\n" + `PC chose ${PCC}`
+        let x= "oh! you lost\n" + `${UsC} beats${PCC}`
         return x
     }
+    else if((GR===3)){
+        return "It's a tie! Try again."
+    }
+    
 }
 PcChoice = pc_move();
 PcChoiceW = pc_choice_to_word(PcChoice);
+UserChoicW = user_choice_to_word(UserInput);
 Result = analyze(PcChoice,UserInput);
-alert(ShowResult(Result,PcChoiceW))
+alert(ShowResult(Result,PcChoiceW,UserChoicW))
 
 
 
