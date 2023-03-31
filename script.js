@@ -1,4 +1,4 @@
-let UserInput =  parseInt(prompt("please enter 1 for rock , 2 for paper and 3 for scissor  "))
+let UserInput 
 let PcChoice 
 let Result
 let PcChoiceW
@@ -49,22 +49,51 @@ function ShowResult(GR,PCC,UsC){
         return  "please enter a valid value"
     }
     else if((GR===1)){
-        return "yeah! you won\n" +`${UsC} beats${PCC}`
+        return "one point for you \n" +`${UsC} beats${PCC}\n You ${player1} \n PC ${player2}`
     }
     else if((GR===2)){
-        let x= "oh! you lost\n" + `${UsC} beats${PCC}`
+        let x= "one point for pc \n" + `${PCC} beats${UsC}\n You ${player1} \n PC ${player2}`
         return x
     }
     else if((GR===3)){
-        return "It's a tie! Try again."
+        return `It's a tie! Try again.\n You ${player1} \n PC ${player2}`
     }
     
 }
-PcChoice = pc_move();
-PcChoiceW = pc_choice_to_word(PcChoice);
-UserChoicW = user_choice_to_word(UserInput);
-Result = analyze(PcChoice,UserInput);
-alert(ShowResult(Result,PcChoiceW,UserChoicW))
+let player1= 0
+let player2= 0
 
+function loop(){
+   for (let j = 0; j<Infinity; j++ ){
+     if(player1===5){
+        
+        alert(`You won`+ `\n You ${player1} \n PC ${player2}`);
+        break;
+     }
+     else if(player2===5){
+        alert(`PC won`+ `\n You ${player1} \n PC ${player2}`);
+        break;
+     }
+     else{
+        InputI =   prompt("please enter 1 for rock , 2 for paper and 3 for scissor  ")
+        if(InputI===null){ alert("ok bye"); break;}else{
+        UserInput =  parseInt(InputI)
+        PcChoice = pc_move();
+        PcChoiceW = pc_choice_to_word(PcChoice);
+        UserChoicW = user_choice_to_word(UserInput);
+        Result = analyze(PcChoice,UserInput);
+        if(Result===1){
+            player1++
+        }
+        else if(Result===2){
+            player2++
 
+        }
+        alert(ShowResult(Result,PcChoiceW,UserChoicW))
 
+     }
+
+     }}
+    }
+    
+loop()
