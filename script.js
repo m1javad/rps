@@ -32,5 +32,5 @@ function pc_choice_to_word(input){
 
 pc_choice = pc_move();
 pc_choice_w = pc_choice_to_word(pc_choice)
-result = analyze(pc_choice,2);
+result = analyze(pc_choice,userinput);
 alert(result)
